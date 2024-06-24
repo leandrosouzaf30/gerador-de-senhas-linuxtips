@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  giropops-senhas:
+    image: leandrosouzaf30/linuxtips-giropops-senhas:2.0
+    ports:
+      - '5000:5000'
+    networks:
+      - proxy-giropops
+    environment:
+      REDIS_HOST: redis
+  redis:
+    image: redis
+    ports: 
+      - '6379:6379'
+    networks:
+      - proxy-giropops
+
+networks:
+  proxy-giropops:
+    driver: bridge
+  
